@@ -49,9 +49,10 @@ function playRound() {
   displayGameboard();
 }
 
-while (true) {
-  playRound();
-}
+// TODO: implement main game function, a while loop to play rounds and check
+// for win condition after each round
+
+// TODO: implement a way to check for win conditions
 
 // uncomment this once the core code is complete
 // })();

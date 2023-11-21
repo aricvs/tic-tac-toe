@@ -1,0 +1,20 @@
+playgame
+    while game over != true
+        playround
+        check win condition
+            if true
+                game over = true
+                print winner
+
+
+playround
+    player turn pick
+    switch turn
+    display board
+ 
+
+player turn pick
+    check turn
+    check if input is valid
+    check if space is valid
+    make pick
