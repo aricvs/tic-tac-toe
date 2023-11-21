@@ -28,6 +28,7 @@ function playerPick() {
     mark = "O";
   }
 
+  // keep prompting until player picks an empty square and uses a valid number
   while (true) {
     pick = prompt("Choose a square (1-9)");
     if (/^\d$/.test(pick) && /^\d$/.test(gameboard.board[pick - 1])) {
@@ -37,9 +38,11 @@ function playerPick() {
 
   gameboard.board[pick - 1] = mark;
 
-  turn === 1 ? (turn = 2) : (turn = 1);
-
   displayGameboard();
+}
+
+function switchTurn() {
+  turn === 1 ? (turn = 2) : (turn = 1);
 }
 
 // uncomment this once the core code is complete
