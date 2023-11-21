@@ -1,28 +1,24 @@
 "use strict";
 
-// generate the board
-function generateGameboard() {
-  const gameboardArray = [];
+// uncomment this once the core code is complete
+// const game = (() => {
+function createPlayer(name, mark, turn) {
+  return { name, mark, turn };
+}
 
-  for (let row = 0; row < 3; row++) {
-    gameboardArray.push([]);
-    for (let col = 0; col < 3; col++) {
-      gameboardArray[row].push("-");
+const player1 = createPlayer("p1", "X", true);
+const player2 = createPlayer("p2", "O", false);
+
+function generateBoard() {
+  let boardArray = [];
+  for (let i = 0; i < 3; i++) {
+    boardArray.push([]);
+    for (let j = 0; j < 3; j++) {
+      boardArray[i].push("-");
     }
   }
-
-  return gameboardArray;
+  return boardArray;
 }
 
-// creates the board variable
-const gameboard = generateGameboard();
-
-// get the player names from prompt, return object with names
-function getPlayers() {
-  const player1 = prompt("Player 1 (o) name:");
-  const player2 = prompt("Player 2 (x) name");
-
-  return { player1: player1, player2: player2 };
-}
-
-console.log(getPlayers());
+const gameboard = generateBoard();
+// })();
