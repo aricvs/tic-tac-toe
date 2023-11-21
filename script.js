@@ -6,7 +6,7 @@ function createPlayer(name, mark, turn) {
   return { name, mark, turn };
 }
 
-const turn = 1;
+let turn = 1;
 const player1 = createPlayer("p1", "X");
 const player2 = createPlayer("p2", "O");
 
@@ -24,9 +24,7 @@ function generateBoard() {
 const gameboard = generateBoard();
 
 function displayBoard() {
-  for (let i = 0; i < 3; i++) {
-    console.log(`${gameboard[i][0]} ${gameboard[i][1]} ${gameboard[i][2]}`);
-  }
+  console.table(gameboard);
 }
 
 function getPick() {
@@ -39,7 +37,28 @@ function fillGameboard() {
   const roundPicks = getPick();
   if (turn === 1) {
     gameboard[roundPicks.rowPick][roundPicks.colPick] = "X";
+  } else {
+    gameboard[roundPicks.rowPick][roundPicks.colPick] = "O";
   }
 }
+
+function switchTurn() {
+  turn === 1 ? (turn = 2) : (turn = 1);
+}
+
+function playRound() {
+  fillGameboard();
+  displayBoard();
+  switchTurn();
+}
+
+function playGame() {
+  let gameOver = false;
+  while (gameOver === false) {
+    playRound();
+  }
+}
+
+playGame();
 
 // })();
