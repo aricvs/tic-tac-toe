@@ -16,5 +16,31 @@ function displayGameboard() {
 
 displayGameboard();
 
+let turn = 1;
+
+function playerPick() {
+  let mark;
+  let pick;
+
+  if (turn === 1) {
+    mark = "X";
+  } else {
+    mark = "O";
+  }
+
+  while (true) {
+    pick = prompt("Choose a square (1-9)");
+    if (/^\d$/.test(pick) && /^\d$/.test(gameboard.board[pick - 1])) {
+      break;
+    }
+  }
+
+  gameboard.board[pick - 1] = mark;
+
+  turn === 1 ? (turn = 2) : (turn = 1);
+
+  displayGameboard();
+}
+
 // uncomment this once the core code is complete
 // })();
