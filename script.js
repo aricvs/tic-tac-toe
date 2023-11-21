@@ -1,20 +1,16 @@
-function createGameboard(gameboard) {
-  return {
-    gameboard: [
-      ["-", "-", "-"],
-      ["-", "-", "-"],
-      ["-", "-", "-"],
-    ],
-  };
+"use strict";
+
+function generateGameboard() {
+  const gameboardArray = [];
+
+  for (let row = 0; row < 3; row++) {
+    gameboardArray.push([]);
+    for (let col = 0; col < 3; col++) {
+      gameboardArray[row].push("-");
+    }
+  }
+
+  return gameboardArray;
 }
 
-function createPlayer(name, mark) {
-  return {
-    name: name,
-    mark: mark,
-  };
-}
-
-const gameboard = createGameboard();
-const player1 = createPlayer("John", "o");
-const player2 = createPlayer("Mary", "x");
+console.log(generateGameboard());
