@@ -30,8 +30,16 @@ function displayBoard() {
 }
 
 function getPick() {
-  rowPick = prompt();
-  colPick = prompt();
+  const rowPick = prompt("Choose a row number (index 0)");
+  const colPick = prompt("Choose a column number (index 0)");
+  return { rowPick, colPick };
+}
+
+function fillGameboard() {
+  const roundPicks = getPick();
+  if (turn === 1) {
+    gameboard[roundPicks.rowPick][roundPicks.colPick] = "X";
+  }
 }
 
 // })();
