@@ -6,8 +6,9 @@ function createPlayer(name, mark, turn) {
   return { name, mark, turn };
 }
 
-const player1 = createPlayer("p1", "X", true);
-const player2 = createPlayer("p2", "O", false);
+const turn = 1;
+const player1 = createPlayer("p1", "X");
+const player2 = createPlayer("p2", "O");
 
 function generateBoard() {
   let boardArray = [];
@@ -21,4 +22,16 @@ function generateBoard() {
 }
 
 const gameboard = generateBoard();
+
+function displayBoard() {
+  for (let i = 0; i < 3; i++) {
+    console.log(`${gameboard[i][0]} ${gameboard[i][1]} ${gameboard[i][2]}`);
+  }
+}
+
+function getPick() {
+  rowPick = prompt();
+  colPick = prompt();
+}
+
 // })();
