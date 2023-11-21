@@ -37,12 +37,20 @@ function playerPick() {
   }
 
   gameboard.board[pick - 1] = mark;
-
-  displayGameboard();
 }
 
 function switchTurn() {
   turn === 1 ? (turn = 2) : (turn = 1);
+}
+
+function playRound() {
+  playerPick();
+  switchTurn();
+  displayGameboard();
+}
+
+while (true) {
+  playRound();
 }
 
 // uncomment this once the core code is complete
