@@ -5,9 +5,17 @@ const game = {
 
 const Gameboard = (function () {
   const board = ["", "", "", "", "", "", "", "", ""];
-  return board;
+  function displayBoard() {
+    const cells = document.querySelectorAll(".container__square");
+    cells.forEach(
+      (cell) => (cell.textContent = this.board[cell.getAttribute("cellIdx")])
+    );
+  }
+  return { board, displayBoard };
 })();
 
 function Players(mark) {
   return { mark };
 }
+
+Gameboard.displayBoard();
