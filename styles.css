@@ -27,6 +27,14 @@ body {
   font-size: 5rem;
 }
 
+.container__square:hover {
+  background-color: lightgray;
+}
+
+.container__square:active {
+  background-color: gray;
+}
+
 .square__1 {
   border-top: 5px solid transparent;
   border-left: 5px solid transparent;
