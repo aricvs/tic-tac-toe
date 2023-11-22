@@ -49,8 +49,25 @@ function playRound() {
   displayGameboard();
 }
 
-// TODO: implement main game function, a while loop to play rounds and check
-// for win condition after each round
+// TODO: add checkTie function
+function playGame() {
+  let winner;
+  let gameOver = false;
+
+  while (!gameOver) {
+    playRound();
+    if (checkWin() === 1) {
+      winner = "X";
+      gameOver = true;
+    }
+    if (checkWin() === 2) {
+      winner = "O";
+      gameOver = true;
+    }
+  }
+
+  console.log(`${winner} wins!`);
+}
 
 // check win conditions and return the winning player
 function checkWin() {
@@ -80,5 +97,7 @@ function checkWin() {
     return 2;
   }
 }
+
+playGame();
 // uncomment this once the core code is complete
 // })();
