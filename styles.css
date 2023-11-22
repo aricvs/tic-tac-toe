@@ -8,18 +8,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
 }
 
 .main__container {
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
 
 .container__cells {
-  height: 9rem;
-  width: 9rem;
+  height: 6rem;
+  width: 6rem;
   border: 5px solid black;
   display: flex;
   align-items: center;
@@ -71,4 +72,22 @@ body {
 .cell__9 {
   border-bottom: 5px solid transparent;
   border-right: 5px solid transparent;
+}
+
+.container__messages {
+  margin: 0;
+  visibility: hidden;
+}
+
+.container__restart-btn {
+  width: 7rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border-style: 1px solid black;
+  cursor: pointer;
+}
+
+.container__restart-btn:active {
+  background-color: gray;
 }

@@ -33,7 +33,9 @@ const player2 = Player("O");
 let currentPlayer = 1;
 let running = false;
 
-const startGame = function () {};
+const startGame = function () {
+  cells.forEach((cell) => cell.addEventListener("click", clickCell));
+};
 
 const clickCell = function () {};
 
