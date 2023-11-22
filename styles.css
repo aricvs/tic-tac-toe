@@ -1,0 +1,23 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  border: 1px solid red;
+  justify-content: center;
+}
+
+.container__square {
+  height: 10vw;
+  width: 10vw;
+}
