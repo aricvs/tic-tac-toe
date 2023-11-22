@@ -15,6 +15,7 @@ function Player(mark) {
   return { mark };
 }
 
+// TODO: put below in an IIFE called "game"
 let gameboard = Gameboard;
 let player1 = Player("X");
 let player2 = Player("O");
@@ -26,14 +27,16 @@ const makePick = function () {
 
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
-      if (currentPlayer === 1) {
-        gameboard.board[cell.getAttribute("cellIdx")] = player1.mark;
-        switchPlayer();
-      } else {
-        gameboard.board[cell.getAttribute("cellIdx")] = player2.mark;
-        switchPlayer();
+      if (gameboard.board[cell.getAttribute("cellIdx")] === "") {
+        if (currentPlayer === 1) {
+          gameboard.board[cell.getAttribute("cellIdx")] = player1.mark;
+          switchPlayer();
+        } else {
+          gameboard.board[cell.getAttribute("cellIdx")] = player2.mark;
+          switchPlayer();
+        }
+        gameboard.displayBoard();
       }
-      gameboard.displayBoard();
     });
   });
 };
