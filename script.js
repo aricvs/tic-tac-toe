@@ -1,6 +1,9 @@
 "use strict";
-const game = {};
-
-const gameboard = {
-  board: ["", "", "", "", "", "", "", "", ""],
+const game = {
+  turn: 1,
 };
+
+const gameboard = (function () {
+  const board = ["", "", "", "", "", "", "", "", ""];
+  return board;
+})();
