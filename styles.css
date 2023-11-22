@@ -17,7 +17,7 @@ body {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
-.container__square {
+.container__cells {
   height: 9rem;
   width: 9rem;
   border: 5px solid black;
@@ -27,46 +27,46 @@ body {
   font-size: 5rem;
 }
 
-.container__square:hover {
+.container__cells:hover {
   background-color: lightgray;
 }
 
-.container__square:active {
+.container__cells:active {
   background-color: gray;
 }
 
-.square__1 {
+.cell__1 {
   border-top: 5px solid transparent;
   border-left: 5px solid transparent;
 }
 
-.square__2 {
+.cell__2 {
   border-top: 5px solid transparent;
 }
 
-.square__3 {
+.cell__3 {
   border-top: 5px solid transparent;
   border-right: 5px solid transparent;
 }
 
-.square__4 {
+.cell__4 {
   border-left: 5px solid transparent;
 }
 
-.square__6 {
+.cell__6 {
   border-right: 5px solid transparent;
 }
 
-.square__7 {
+.cell__7 {
   border-left: 5px solid transparent;
   border-bottom: 5px solid transparent;
 }
 
-.square__8 {
+.cell__8 {
   border-bottom: 5px solid transparent;
 }
 
-.square__9 {
+.cell__9 {
   border-bottom: 5px solid transparent;
   border-right: 5px solid transparent;
 }
