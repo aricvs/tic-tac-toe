@@ -3,7 +3,11 @@ const game = {
   turn: 1,
 };
 
-const gameboard = (function () {
+const Gameboard = (function () {
   const board = ["", "", "", "", "", "", "", "", ""];
   return board;
 })();
+
+function Players(mark) {
+  return { mark };
+}
