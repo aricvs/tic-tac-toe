@@ -1,11 +1,14 @@
 "use strict";
 
-// uncomment this once the core code is complete
-// const game = (() => {
+// global gameboard variable
 const gameboard = {
   board: [1, 2, 3, 4, 5, 6, 7, 8, 9],
 };
 
+// global turn variable
+let turn = 1;
+
+// renders the gameboard in the console with additional styling
 function displayGameboard() {
   console.log(
     `\n ${gameboard.board[0]} | ${gameboard.board[1]} | ${gameboard.board[2]}\n---|---|---
@@ -14,10 +17,7 @@ function displayGameboard() {
   );
 }
 
-displayGameboard();
-
-let turn = 1;
-
+// function to prompt player for a pick
 function playerPick() {
   let mark;
   let pick;
@@ -39,34 +39,36 @@ function playerPick() {
   gameboard.board[pick - 1] = mark;
 }
 
+// switches player turn
 function switchTurn() {
   turn === 1 ? (turn = 2) : (turn = 1);
 }
 
+// plays a single round of the game
 function playRound() {
   playerPick();
   switchTurn();
   displayGameboard();
 }
 
-// TODO: add checkTie function
+// runs a loop to play rounds, check for win conditions and tie conditions
+// TODO: fix infinite loop
 function playGame() {
-  let winner;
-  let gameOver = false;
-
-  while (!gameOver) {
+  while (true) {
     playRound();
     if (checkWin() === 1) {
-      winner = "X";
-      gameOver = true;
+      console.log("X wins!");
+      break;
     }
     if (checkWin() === 2) {
-      winner = "O";
-      gameOver = true;
+      console.log("O wins!");
+      break;
+    }
+    if (checkTie()) {
+      console.log("It's a tie!");
+      break;
     }
   }
-
-  console.log(`${winner} wins!`);
 }
 
 // check win conditions and return the winning player
@@ -98,6 +100,16 @@ function checkWin() {
   }
 }
 
+// check if there are numbered squares remaining, return true or false
+function checkTie() {
+  let hasTie = true;
+  gameboard.board.forEach((spot) => {
+    if (typeof spot === "number") {
+      hasTie = false;
+    }
+  });
+  return hasTie;
+}
+
+displayGameboard();
 playGame();
-// uncomment this once the core code is complete
-// })();
