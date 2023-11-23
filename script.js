@@ -34,7 +34,10 @@ const Game = (function () {
   let currentPlayer = player1.mark;
   let running = false;
 
-  const clickCell = function () {};
+  const clickCell = function () {
+    const cellIdx = this.getAttribute("cellIdx");
+    console.log(cellIdx);
+  };
 
   const fillCell = function (cell, index) {};
 
