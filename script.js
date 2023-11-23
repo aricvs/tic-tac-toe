@@ -31,12 +31,8 @@ const Game = (function () {
   ];
   const player1 = Player("X");
   const player2 = Player("O");
-  let currentPlayer = 1;
+  let currentPlayer = player1.mark;
   let running = false;
-
-  const startGame = function () {
-    cells.forEach((cell) => cell.addEventListener("click", clickCell));
-  };
 
   const clickCell = function () {};
 
@@ -47,4 +43,11 @@ const Game = (function () {
   const checkWin = function () {};
 
   const restartGame = function () {};
+
+  const startGame = (function () {
+    cells.forEach((cell) => cell.addEventListener("click", clickCell));
+    restartBtn.addEventListener("click", () => restartGame);
+    gameMsg.style.visibility = "visible";
+    gameMsg.textContent = `It's ${currentPlayer}'s turn`;
+  })();
 })();
