@@ -32,7 +32,7 @@ const Game = (function () {
   const player1 = Player("X");
   const player2 = Player("O");
   let currentPlayer = player1.mark;
-  let running = false;
+  let running = true;
 
   const clickCell = function () {
     const cellIdx = this.getAttribute("cellIdx");
@@ -49,9 +49,37 @@ const Game = (function () {
     cell.textContent = currentPlayer;
   };
 
-  const switchPlayer = function () {};
+  const switchPlayer = function () {
+    currentPlayer = currentPlayer === "X" ? player2.mark : player1.mark;
+    gameMsg.textContent = `${currentPlayer}'s turn`;
+  };
 
-  const checkWin = function () {};
+  const checkWin = function () {
+    let gameOver = false;
+    for (let i = 0; i < winConditions.length; i++) {
+      const condition = winConditions[i];
+      const cell1 = gameboard.board[condition[0]];
+      const cell2 = gameboard.board[condition[1]];
+      const cell3 = gameboard.board[condition[2]];
+
+      if (cell1 === "" || cell2 === "" || cell3 === "") {
+        continue;
+      }
+      if (cell1 === cell2 && cell2 === cell3) {
+        gameOver = true;
+        break;
+      }
+    }
+    if (gameOver) {
+      gameMsg.textContent = `${currentPlayer} wins!`;
+      running = false;
+    } else if (!gameboard.board.includes("")) {
+      gameMsg.textContent = `Draw!`;
+      running = false;
+    } else {
+      switchPlayer();
+    }
+  };
 
   const restartGame = function () {};
 
