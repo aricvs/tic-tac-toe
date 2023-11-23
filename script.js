@@ -1,7 +1,7 @@
 "use strict";
 
 const Gameboard = (function () {
-  const board = ["", "", "", "", "", "", "", "", ""];
+  let board = ["", "", "", "", "", "", "", "", ""];
   function displayBoard() {
     cells.forEach(
       (cell) => (cell.textContent = this.board[cell.getAttribute("cellIdx")])
@@ -70,6 +70,7 @@ const Game = (function () {
         break;
       }
     }
+
     if (gameOver) {
       gameMsg.textContent = `${currentPlayer} wins!`;
       running = false;
@@ -81,11 +82,20 @@ const Game = (function () {
     }
   };
 
-  const restartGame = function () {};
+  const restartGame = function () {
+    console.log("test");
+    currentPlayer = player1.mark;
+    gameboard.board = ["", "", "", "", "", "", "", "", ""];
+    gameMsg.textContent = `It's ${currentPlayer}'s turn`;
+    cells.forEach((cell) => {
+      cell.textContent = "";
+    });
+    running = true;
+  };
 
   const startGame = (function () {
     cells.forEach((cell) => cell.addEventListener("click", clickCell));
-    restartBtn.addEventListener("click", () => restartGame);
+    restartBtn.addEventListener("click", restartGame);
     gameMsg.style.visibility = "visible";
     gameMsg.textContent = `It's ${currentPlayer}'s turn`;
   })();
