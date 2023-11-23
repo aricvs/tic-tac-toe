@@ -17,6 +17,7 @@ function Player(mark) {
 const Game = (function () {
   const gameMsg = document.querySelector(".container__messages");
   const cells = document.querySelectorAll(".container__cells");
+  const restartBtn = document.querySelector(".container__restart-btn");
   const gameboard = Gameboard;
   const winConditions = [
     [0, 1, 2],
@@ -44,4 +45,6 @@ const Game = (function () {
   const switchPlayer = function () {};
 
   const checkWin = function () {};
+
+  const restartGame = function () {};
 })();
