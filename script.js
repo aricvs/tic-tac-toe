@@ -53,6 +53,7 @@ const Game = (function () {
   const fillCell = function (cell, index) {
     gameboard.board[index] = currentPlayer;
     cell.textContent = currentPlayer;
+    colorize(cell);
   };
 
   // switch players, self explanatory
@@ -120,6 +121,13 @@ const Game = (function () {
       cell.classList.add("cell--hover");
       cell.classList.add("cell--active");
     });
+  };
+
+  // changes mark color depending on the current player
+  const colorize = function (currentCell) {
+    currentPlayer === "X"
+      ? (currentCell.style.color = "red")
+      : (currentCell.style.color = "blue");
   };
 
   // initializes the game and sets the event listeners to run via IIFE
