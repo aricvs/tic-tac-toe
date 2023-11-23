@@ -74,16 +74,17 @@ const Game = (function () {
     if (gameOver) {
       gameMsg.textContent = `${currentPlayer} wins!`;
       running = false;
+      removeEffects();
     } else if (!gameboard.board.includes("")) {
       gameMsg.textContent = `Draw!`;
       running = false;
+      removeEffects();
     } else {
       switchPlayer();
     }
   };
 
   const restartGame = function () {
-    console.log("test");
     currentPlayer = player1.mark;
     gameboard.board = ["", "", "", "", "", "", "", "", ""];
     gameMsg.textContent = `It's ${currentPlayer}'s turn`;
@@ -91,6 +92,23 @@ const Game = (function () {
       cell.textContent = "";
     });
     running = true;
+    addEffects();
+  };
+
+  const removeEffects = function () {
+    cells.forEach((cell) => {
+      cell.style.cursor = "auto";
+      cell.classList.remove("cell--hover");
+      cell.classList.remove("cell--active");
+    });
+  };
+
+  const addEffects = function () {
+    cells.forEach((cell) => {
+      cell.style.cursor = "pointer";
+      cell.classList.add("cell--hover");
+      cell.classList.add("cell--active");
+    });
   };
 
   const startGame = (function () {
