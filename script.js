@@ -36,10 +36,18 @@ const Game = (function () {
 
   const clickCell = function () {
     const cellIdx = this.getAttribute("cellIdx");
-    console.log(cellIdx);
+    if (gameboard.board[cellIdx] != "" || !running) {
+      return;
+    }
+
+    fillCell(this, cellIdx);
+    checkWin();
   };
 
-  const fillCell = function (cell, index) {};
+  const fillCell = function (cell, index) {
+    gameboard.board[index] = currentPlayer;
+    cell.textContent = currentPlayer;
+  };
 
   const switchPlayer = function () {};
 
