@@ -1,4 +1,0 @@
-player turn pick
-    check turn
-    check if space is empty
-    make pick

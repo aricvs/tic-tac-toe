@@ -1,5 +1,6 @@
 "use strict";
 
+// IIFE to build the gameboard and its display function
 const Gameboard = (function () {
   let board = ["", "", "", "", "", "", "", "", ""];
   function displayBoard() {
@@ -10,11 +11,14 @@ const Gameboard = (function () {
   return { board, displayBoard };
 })();
 
+// factory to build the Players
 function Player(mark) {
   return { mark };
 }
 
+// main game IIFE
 const Game = (function () {
+  // declaration of variables to be used by game functions
   const gameMsg = document.querySelector(".container__messages");
   const cells = document.querySelectorAll(".container__cells");
   const restartBtn = document.querySelector(".container__restart-btn");
@@ -34,6 +38,7 @@ const Game = (function () {
   let currentPlayer = player1.mark;
   let running = true;
 
+  // fill cell and check win if a valid space is clicked
   const clickCell = function () {
     const cellIdx = this.getAttribute("cellIdx");
     if (gameboard.board[cellIdx] != "" || !running) {
@@ -44,16 +49,19 @@ const Game = (function () {
     checkWin();
   };
 
+  // update board array and cell content with current player's mark
   const fillCell = function (cell, index) {
     gameboard.board[index] = currentPlayer;
     cell.textContent = currentPlayer;
   };
 
+  // switch players, self explanatory
   const switchPlayer = function () {
     currentPlayer = currentPlayer === "X" ? player2.mark : player1.mark;
     gameMsg.textContent = `${currentPlayer}'s turn`;
   };
 
+  // check all win conditions via loop, end game or switch players
   const checkWin = function () {
     let gameOver = false;
     for (let i = 0; i < winConditions.length; i++) {
@@ -84,6 +92,7 @@ const Game = (function () {
     }
   };
 
+  // restarts game, self explanatory
   const restartGame = function () {
     currentPlayer = player1.mark;
     gameboard.board = ["", "", "", "", "", "", "", "", ""];
@@ -95,6 +104,7 @@ const Game = (function () {
     addEffects();
   };
 
+  // remove interaction effects (CSS pseudo classes) from cells
   const removeEffects = function () {
     cells.forEach((cell) => {
       cell.style.cursor = "auto";
@@ -103,6 +113,7 @@ const Game = (function () {
     });
   };
 
+  // add back interaction effects (CSS pseudo classes) on cells
   const addEffects = function () {
     cells.forEach((cell) => {
       cell.style.cursor = "pointer";
@@ -111,6 +122,7 @@ const Game = (function () {
     });
   };
 
+  // initializes the game and sets the event listeners to run via IIFE
   const startGame = (function () {
     cells.forEach((cell) => cell.addEventListener("click", clickCell));
     restartBtn.addEventListener("click", restartGame);
